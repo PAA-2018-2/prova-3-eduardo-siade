@@ -109,7 +109,7 @@ Para verificar que o ciclo não-dirigido também é NP-completo, basta substitui
 
 	Pode-se mostrar que é possível construir ham-cycles a partir desse problema, já que, como foi mostrado que o ham-cycle é um np completo, a redução correta do ham-cycle mostra que esse problema também é np completo.
 	
-	Assim, constroi-se um grafo que soluciona esse problema de forma que um dos nós possui 2 bolas de gude e todos os outros possuem uma bola de gude. Assim, no vértice que possui 2 bolas de gude, retira-se as duas e adiciona um ao próximo vértice. Depois, avança para o próximo vértice, que passa a ter 2 bolas, faz o mesmo procedimento e avança até chegar ao último vértice. Nesse nó, o mesmo procedimento é feito e 2 bolas são removidas, ficando com nenhuma nele e acrescentando uma ao próximo nó que foi o que iniciou. Assim, ao final, percorre-se uma única vez cada vértice formando um ciclo e sobra apenas 1 bola no grafo. Desse modo, mostra-s
+	Assim, constroi-se um grafo que soluciona esse problema de forma que um dos nós possui 2 bolas de gude e todos os outros possuem uma bola de gude. Assim, no vértice que possui 2 bolas de gude, retira-se as duas e adiciona um ao próximo vértice. Depois, avança para o próximo vértice, que passa a ter 2 bolas, faz o mesmo procedimento e avança até chegar ao último vértice. Nesse nó, o mesmo procedimento é feito e 2 bolas são removidas, ficando com nenhuma nele e acrescentando uma ao próximo nó que foi o que iniciou. Assim, ao final, percorre-se uma única vez cada vértice formando um ciclo e sobra apenas 1 bola no grafo. Desse modo, mostra-se que o ham-cycle pode ser reduzido a esse problema e, como é np e np-hard, esse problema é np-completo.
 	
   }
   
