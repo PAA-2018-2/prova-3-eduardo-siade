@@ -31,7 +31,7 @@ CIC 117536 - Projeto e Análise de Algoritmos \\[.5cm]  Terceira Prova \\[.5cm] 
 
  
   \resposta{
-    Cria-se um digrafo contendo cada variável e a negação de cada uma em cada vértice e para cada $$(x\lor y)$$ é feito um vértice ligando $$(\neg x)$$ a y e um vértice ligando $$(\neg y)$$ a x.
+    Cria-se um digrafo contendo cada variável e a negação de cada uma em cada vértice e para cada ${(x\lor y)}$ é feito um vértice ligando ${\neg x}$ a y e um vértice ligando ${\neg y}$ a x.
 
 	Com o digrafo pronto representando a fórmula, é feita a identificação de componentes fortemente conectados sem que a variável e a negação dela estejam no mesmo componente, isso é feito em tempo linear.
 
@@ -78,13 +78,13 @@ E todas as reduções (de 3-SAT para $Q'$, de $Q'$ para $Q$ e de $Q$ para HAM-CY
 
 Primeiro, para verificar que o ham-cyle dirigido é NP, basta usar um algoritmo que verifica se cada vértice que faz parte do ciclo aparece uma única vez no ciclo e percorrendo o caminho possa retornar ao primeiro vértice ao final do ciclo. Isso pode ser feito em tempo polinomial. Após isso, pode-se verificar se é NP completo a partir do 3-SAT.
 
-Um 3-SAT contendo n variáveis possui $$2^n$$ possíveis cláusulas. Um grafo correspondendo a essas possibilidades é construído com n caminhos representando as variáveis e cada caminho possui 2k nós, ligados por arestas, em que k é o número de cláusulas da fórmula.
+Um 3-SAT contendo n variáveis possui ${2^n}$ possíveis cláusulas. Um grafo correspondendo a essas possibilidades é construído com n caminhos representando as variáveis e cada caminho possui 2k nós, ligados por arestas, em que k é o número de cláusulas da fórmula.
 
 Depois é preciso ligar os caminhos e isso pode ser feito conectando cada vértice que inicia um caminho ao início e ao fim do próximo caminho e o mesmo é feito para o nó que termina um caminho, ligando ao ao início e ao fim do próximo caminho. Por fim, acrescenta-se 2 vértices intermediários, o primeiro com uma aresta em direção ao vértice de início do primeiro caminho e com outra aresta em direção ao vértice que termina o primeiro caminho. A partir do vértice que inicia o último caminho, é feita uma aresta em direção ao segundo vértice intermediário e, a partir do vértice que finaliza esse caminho, uma outra aresta é feita em direção a esse vértice intermediário. Por fim, uma aresta é feita partindo do segundo nó intermediário ao primeiro.
 
 Em seguida são adicionados vértices representando as cláusulas, cada cláusula será ligada a 2 nós de cada caminho correspondente a uma variável existente na cláusula, os nós a que serão ligados corresponde ao primeiro nó ímpar do caminho e o primeiro nó par que ainda não foram ligados a uma cláusula (considera-se que os nós de cada caminho estão numerados de 1 a 2k, a partir do nó que inicia o caminho). Se na cláusula, a variável não-negada está contida, o caminho é feito a partir do nó ímpar até o nó par passando pelo nó da cláusula. Caso seja a negação da variável que esteja presente o caminho é contrário, sai do nó par em direção ao nó ímpar passando pelo nó da cláusula.
 
-Nesse grafo cada um dos n caminhos podem ser percorridos da direita para a esquerda ou da esquerda para a direita. Desse modo existem $$2^n$$ ciclos diferentes. Além disso, atravessando um caminho da esquerda para a direita permite verificar que uma variável é verdadeira e da direita para a esquerda que é falsa e cada cláusula é visitada passando por algum caminho na direção correta para cada variável presente na cláusula. Assim, o ciclo Hamiltoniano dirigido satisfaz o 3-SAT e pode ser considerado NP-completo.
+Nesse grafo cada um dos n caminhos podem ser percorridos da direita para a esquerda ou da esquerda para a direita. Desse modo existem ${2^n}$ ciclos diferentes. Além disso, atravessando um caminho da esquerda para a direita permite verificar que uma variável é verdadeira e da direita para a esquerda que é falsa e cada cláusula é visitada passando por algum caminho na direção correta para cada variável presente na cláusula. Assim, o ciclo Hamiltoniano dirigido satisfaz o 3-SAT e pode ser considerado NP-completo.
 
 Para verificar que o ciclo não-dirigido também é NP-completo, basta substituir cada aresta do não-dirigido por 2 arestas em sentidos contrários. Isso mantém as características de um não-dirigido, mas o torna dirigido. Essa mudança pode ser feita em tempo polinomial, já que é apenas um loop que passa por todas as arestas e as substitui por outras duas. Desse modo, como a redução é possível, o ham-cycle não-dirigido é também NP-completo.
 
@@ -105,7 +105,7 @@ Para verificar que o ciclo não-dirigido também é NP-completo, basta substitui
   ser incluídas na solução.
 
   \resposta{
-    Para verificar que o problema é NP-completo, primeiro verifica se é NP. Isso pode ser provado percorrendo os vértices e para cada vértice que possuir 2 ou mais bolas de gude realizar a remoção de todas as bolas possíveis de duas em duas e colocar a quantidade necessária de bolas no próximo vértice, o percorrimento é feito em um único sentido (direita para esquerda ou esquerda para direita), passando por todos os vértices uma vez apenas antes de voltar ao primeiro vértice. Esse percorrimento pode ser feito em tempo polinomial.
+    Para verificar que o problema é NP-completo, primeiro verifica se é NP. Isso pode ser mostrado percorrendo os vértices e para cada vértice que possuir 2 ou mais bolas de gude realizar a remoção de todas as bolas possíveis de duas em duas e colocar a quantidade necessária de bolas no próximo vértice, o percorrimento é feito em um único sentido (direita para esquerda ou esquerda para direita), passando por todos os vértices uma vez apenas antes de voltar ao primeiro vértice. Esse percorrimento pode ser feito em tempo polinomial.
 
 	Pode-se mostrar que é possível construir ham-cycles a partir desse problema, já que, como foi mostrado que o ham-cycle é um np completo, a redução correta do ham-cycle mostra que esse problema também é np completo.
 	
@@ -131,11 +131,11 @@ Para verificar que o ciclo não-dirigido também é NP-completo, basta substitui
   intermediárias, caso existam, devem ser incluídas na solução.
 
   \resposta{
-    Para provar que o FNCX-SAT é polinomial, pode-se verificar que cláusulas de disjunção exclusiva são equivalentes a equações lineares em que os valores possíveis são 0 ou 1. Isso ocorre pela característica de que 0+1=1, 1+0=1, 1+1=0 e 0+0=0 e pela tabela verdade é o mesmo que acontece com uma cláusula de disjunção exclusiva. Desse modo, uma cláusula pode ser escrita como uma operação aritmética de soma das variáveis e se a cláusula for satisfeita o resultado é 1. Como a negação não possui uma representação direta em um sistema de equações lineares, pode-se alterá-la de modo que seja substituída pela variável. Isso pode ser feito com $$ x \oplus 1 = \neg x$$, já que, se x=1, essa operação resulta em 0 e, se x=0, resulta em 1 que é exatamente a negação de x. Desse modo, para representar uma cláusula como uma equação linear, basta colocar como uma soma de todas as variáveis presentes nela e somar 1 para cada negação que existe na cláusula.
+    Para provar que o FNCX-SAT é polinomial, pode-se verificar que cláusulas de disjunção exclusiva são equivalentes a equações lineares em que os valores possíveis são 0 ou 1. Isso ocorre pela característica de que 0+1=1, 1+0=1, 1+1=0 e 0+0=0 e pela tabela verdade é o mesmo que acontece com uma cláusula de disjunção exclusiva. Desse modo, uma cláusula pode ser escrita como uma operação aritmética de soma das variáveis e se a cláusula for satisfeita o resultado é 1. Como a negação não possui uma representação direta em um sistema de equações lineares, pode-se alterá-la de modo que seja substituída pela variável. Isso pode ser feito com ${ x \oplus 1 = \neg x}$, já que, se x=1, essa operação resulta em 0 e, se x=0, resulta em 1 que é exatamente a negação de x. Desse modo, para representar uma cláusula como uma equação linear, basta colocar como uma soma de todas as variáveis presentes nela e somar 1 para cada negação que existe na cláusula.
 
 	Em um sistema de equações lineares o resultado depende de cada equação presente. Da mesma forma, na fórmula do FNCX-SAT, o resultado depende de cada cláusula devido à conjunção. Assim, é possível representar como um sistema de equações lineares, que se representado em forma matricial possui 1s para cada variável presente e 0s para cada variável ausente na cláusula e o resultado como 0 ou 1, sendo que cada cláusula corresponde a uma linha.
 
-	Como é um sistema de equações lineares, pode ser resolvido pelo método de eliminação de Gauss que é de tempo polinomial ($$O(n^3)$$). Logo, FNCX-SAT pertence a P.
+	Como é um sistema de equações lineares, pode ser resolvido pelo método de eliminação de Gauss que é de tempo polinomial (${O(n^3)}$). Logo, FNCX-SAT pertence a P.
 }
 \end{enumerate}
 
