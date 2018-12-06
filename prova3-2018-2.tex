@@ -33,11 +33,11 @@ CIC 117536 - Projeto e Análise de Algoritmos \\[.5cm]  Terceira Prova \\[.5cm] 
   \resposta{
     Cria-se um digrafo contendo cada variável e a negação de cada uma em cada vértice e para cada ${(x\lor y)}$ é feito um vértice ligando ${\neg x}$ a y e um vértice ligando ${\neg y}$ a x.
 
-	Com o digrafo pronto representando a fórmula, é feita a identificação de componentes fortemente conectados sem que a variável e a negação dela estejam no mesmo componente, isso é feito em tempo linear.
+	Com o digrafo pronto representando a fórmula, é feita a verificação de componentes fortemente conectados, de modo a verificar que a variável e a negação dela não são fortemente conectadas, isso é feito em tempo linear.
 
-	Por essa montagem do digrafo, se houvesse um caminho de uma variável até a a negação dela, também teria um caminho da negação a ela mesma.
+	Por essa construção do digrafo, se houvesse um caminho de uma variável até a negação dela, também teria um caminho da negação a ela mesma.
 
-	Com isso, é possível verificar um caminho de uma variável à negação verificando se estão em componentes conectados em tempo polinomial.
+	Com isso, é possível verificar um caminho de uma variável à negação verificando se são fortemente conectados. Como a verificação é feita em tempo polinomial, o 2-SAT está em P.
   }
   
 \item {\bf (2.5 pontos)} Em aula, assumimos que SAT é um problema
@@ -109,7 +109,7 @@ Para verificar que o ciclo não-dirigido também é NP-completo, basta substitui
 
 	Pode-se mostrar que é possível construir ham-cycles a partir desse problema, já que, como foi mostrado que o ham-cycle é um np completo, a redução correta do ham-cycle mostra que esse problema também é np completo.
 	
-	Assim, constroi-se um grafo que soluciona esse problema de forma que um dos nós possui 2 bolas de gude e todos os outros possuem uma bola de gude. Assim, no vértice que possui 2 bolas de gude, retira-se as duas e adiciona um ao próximo vértice. Depois, avança para o próximo vértice, que passa a ter 2 bolas, faz o mesmo procedimento e avança até chegar ao último vértice. Nesse nó, o mesmo procedimento é feito e 2 bolas são removidas, ficando com nenhuma nele e acrescentando uma ao próximo nó que foi o que iniciou. Assim, ao final, percorre-se uma única vez cada vértice formando um ciclo e sobra apenas 1 bola no grafo. Desse modo, mostra-se que o ham-cycle pode ser reduzido a esse problema e, como é np e np-hard, esse problema é np-completo.
+	Assim, constroi-se um grafo que soluciona esse problema de forma que um dos nós possua 2 bolas de gude e todos os outros possuam uma bola de gude no início. Assim, no vértice que possui 2 bolas de gude, retira-se as duas e adiciona um ao próximo vértice. Depois, avança para o próximo vértice, que passa a ter 2 bolas, faz o mesmo procedimento e avança até chegar ao último vértice. Nesse nó, o mesmo procedimento é feito e 2 bolas são removidas, ficando com nenhuma nele e acrescentando uma ao próximo nó que foi o que iniciou. Assim, ao final, percorre-se uma única vez cada vértice formando um ciclo e sobra apenas 1 bola no grafo. Desse modo, mostra-se que o ham-cycle pode ser reduzido a esse problema e, como é np e np-hard, esse problema é np-completo.
 	
   }
   
