@@ -31,7 +31,13 @@ CIC 117536 - Projeto e Análise de Algoritmos \\[.5cm]  Terceira Prova \\[.5cm] 
 
  
   \resposta{
-    Escreva aqui sua solução.
+    Cria-se um digrafo contendo cada variável e a negação de cada uma em cada vértice e para cada $$(x\lor y)$$ é feito um vértice ligando $$(\neg x)$$ a y e um vértice ligando $$(\neg y)$$ a x.
+
+	Com o digrafo pronto representando a fórmula, é feita a identificação de componentes fortemente conectados sem que a variável e a negação dela estejam no mesmo componente, isso é feito em tempo linear.
+
+	Por essa montagem do digrafo, se houvesse um caminho de uma variável até a a negação dela, também teria um caminho da negação a ela mesma.
+
+	Com isso, é possível verificar um caminho de uma variável à negação verificando se estão em componentes conectados em tempo polinomial.
   }
   
 \item {\bf (2.5 pontos)} Em aula, assumimos que SAT é um problema
@@ -68,7 +74,21 @@ $$\xymatrix{
 E todas as reduções (de 3-SAT para $Q'$, de $Q'$ para $Q$ e de $Q$ para HAM-CYCLE) devem ser detalhadas na sua solução.
 
 \resposta{
-    Escreva aqui sua solução.
+    Para provar que o ham-cycle não-dirigido é um problema np completo, pode-se mudá-lo para um ham-cycle dirigido para provar. Contudo, é necessário provar que o ham-cycle dirigido é um problema np completo. Para isso, usa-se a redução do 3-SAT.
+
+Primeiro, para verificar que o ham-cyle dirigido é NP, basta usar um algoritmo que verifica se cada vértice que faz parte do ciclo aparece uma única vez no ciclo e percorrendo o caminho possa retornar ao primeiro vértice ao final do ciclo. Isso pode ser feito em tempo polinomial. Após isso, pode-se verificar se é NP completo a partir do 3-SAT.
+
+Um 3-SAT contendo n variáveis possui $$2^n$$ possíveis cláusulas. Um grafo correspondendo a essas possibilidades é construído com n caminhos representando as variáveis e cada caminho possui 2k nós, ligados por arestas, em que k é o número de cláusulas da fórmula.
+
+Depois é preciso ligar os caminhos e isso pode ser feito conectando cada vértice que inicia um caminho ao início e ao fim do próximo caminho e o mesmo é feito para o nó que termina um caminho, ligando ao ao início e ao fim do próximo caminho. Por fim, acrescenta-se 2 vértices intermediários, o primeiro com uma aresta em direção ao vértice de início do primeiro caminho e com outra aresta em direção ao vértice que termina o primeiro caminho. A partir do vértice que inicia o último caminho, é feita uma aresta em direção ao segundo vértice intermediário e, a partir do vértice que finaliza esse caminho, uma outra aresta é feita em direção a esse vértice intermediário. Por fim, uma aresta é feita partindo do segundo nó intermediário ao primeiro.
+
+Em seguida são adicionados vértices representando as cláusulas, cada cláusula será ligada a 2 nós de cada caminho correspondente a uma variável existente na cláusula, os nós a que serão ligados corresponde ao primeiro nó ímpar do caminho e o primeiro nó par que ainda não foram ligados a uma cláusula (considera-se que os nós de cada caminho estão numerados de 1 a 2k, a partir do nó que inicia o caminho). Se na cláusula, a variável não-negada está contida, o caminho é feito a partir do nó ímpar até o nó par passando pelo nó da cláusula. Caso seja a negação da variável que esteja presente o caminho é contrário, sai do nó par em direção ao nó ímpar passando pelo nó da cláusula.
+
+Nesse grafo cada um dos n caminhos podem ser percorridos da direita para a esquerda ou da esquerda para a direita. Desse modo existem $$2^n$$ ciclos diferentes. Além disso, atravessando um caminho da esquerda para a direita permite verificar que uma variável é verdadeira e da direita para a esquerda que é falsa e cada cláusula é visitada passando por algum caminho na direção correta para cada variável presente na cláusula. Assim, o ciclo Hamiltoniano dirigido satisfaz o 3-SAT e pode ser considerado NP-completo.
+
+Para verificar que o ciclo não-dirigido também é NP-completo, basta substituir cada aresta do não-dirigido por 2 arestas em sentidos contrários. Isso mantém as características de um não-dirigido, mas o torna dirigido. Essa mudança pode ser feita em tempo polinomial, já que é apenas um loop que passa por todas as arestas e as substitui por outras duas. Desse modo, como a redução é possível, o ham-cycle não-dirigido é também NP-completo.
+
+
   }
   
 \item {\bf (2.5 pontos)} Considere o seguinte jogo em um grafo
@@ -106,7 +126,7 @@ E todas as reduções (de 3-SAT para $Q'$, de $Q'$ para $Q$ e de $Q$ para HAM-CY
   intermediárias, caso existam, devem ser incluídas na solução.
 
   \resposta{
-    Escreva aqui sua solução.
+    Para provar que o FNCX-SAT é polinomial, basta observar que uma disjunção exclusiva pode ser transformado em uma conjunção de duas disjunções de 2 literais. A primeira disjunção contém as duas variáveis e a segunda disjunção contém a negação das duas variáveis $$(x\lor y)\land (\neg x \lor \neg y)$$, quando x é verdadeiro e y também a primeira cláusula é verdadeira, mas a segunda não, logo o resultado é falso. Quando apenas uma das variáveis é verdadeira, cada cláusula é verdadeira, então o resultado é verdadeiro. Se as duas variáveis são falsas, a primeira cláusula é falsa e a segunda verdadeira, logo é o resultado é falso. Isso é o mesmo resultado da disjunção exclusiva. Logo, uma disjunção exclusiva pode ser transformada em uma conjunção de 2 disjunções de 2 variáveis, que corresponde um a problema 2-SAT. Logo, como foi mostrado na questão 1 que 2-SAT é polinomial, essa disjunção também está em $P$.
   }
 \end{enumerate}
 
